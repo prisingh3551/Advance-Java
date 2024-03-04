@@ -1,0 +1,116 @@
+import java.awt.Container;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JFrame;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+import javax.swing.JTextArea;
+
+class MyFrame extends JFrame implements ActionListener{
+    JMenuBar menubar;
+    JMenu file, edit;
+    JMenuItem f1, f2, f3, f4, e1, e2, e3, e4;
+    JTextArea ta;
+    Container c;
+    MyFrame()
+    {
+        c = getContentPane();
+        c.setLayout(null);
+
+        ta = new JTextArea();
+        ta.setBounds(10, 10, 660, 460);
+        ta.setFont(new Font("Arial", Font.BOLD, 24));
+
+        c.add(ta);
+
+        menubar = new JMenuBar();
+
+        //menu1 - file
+        file = new JMenu("File");
+        //create menu items for file
+        f1 = new JMenuItem("new");
+        f2 = new JMenuItem("open");
+        f3 = new JMenuItem("save");
+        f4 = new JMenuItem("close");
+        f1.addActionListener(this);
+        f2.addActionListener(this);
+        f3.addActionListener(this);
+        f4.addActionListener(this);
+        file.add(f1);
+        file.add(f2);
+        file.add(f3);
+        file.add(f4);
+        menubar.add(file);
+
+        // menu2 - edit
+        edit = new JMenu("Edit");
+        //menu items for edit
+        e1 = new JMenuItem("undo");
+        e2 = new JMenuItem("copy");
+        e3 = new JMenuItem("paste");
+        e4 = new JMenuItem("select all");
+        e1.addActionListener(this);
+        e2.addActionListener(this);
+        e3.addActionListener(this);
+        e4.addActionListener(this);
+        edit.add(e1);
+        edit.add(e2);
+        edit.add(e3);
+        edit.add(e4);
+        menubar.add(edit);
+
+        this.setJMenuBar(menubar);
+    }
+    
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        if(e.getSource() == f1)
+        {
+            ta.setText("");
+        }
+        else if(e.getSource() == f2)
+        {
+            ta.setText("open old file");
+        }
+        else if(e.getSource() == f3)
+        {
+            ta.setText("new file content save");
+        }
+        else if(e.getSource() == f4)
+        {
+            ta.setText("close");
+        }
+        else if(e.getSource() == e1)
+        {
+            ta.cut();
+        }
+        else if(e.getSource() == e2)
+        {
+            ta.copy();
+        }
+        else if(e.getSource() == e3)
+        {
+            ta.paste();
+        }
+        else if(e.getSource() == e4)
+        {
+            ta.setText("e4");
+        }
+    }
+}
+
+public class MyNotePad {
+    public static void main(String[] args) {
+
+        MyFrame f = new MyFrame();
+        f.setSize(700, 500);
+        f.setLocationRelativeTo(null);
+        f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        f.setVisible(true);
+    }
+}
