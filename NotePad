@@ -12,11 +12,13 @@ import javax.swing.JTextArea;
 class MyFrame extends JFrame implements ActionListener{
     JMenuBar menubar;
     JMenu file, edit;
-    JMenuItem f1, f2, f3, f4, e1, e2, e3, e4;
+    JMenuItem f1, f2, f3, f4, f5, f6, f7, f8;
+    JMenuItem e1, e2, e3, e4, e5, e6, e7, e8, e9, e10, e11, e12, e13;
     JTextArea ta;
     Container c;
     MyFrame()
     {
+        setTitle("Text Editor");
         c = getContentPane();
         c.setLayout(null);
 
@@ -31,18 +33,30 @@ class MyFrame extends JFrame implements ActionListener{
         //menu1 - file
         file = new JMenu("File");
         //create menu items for file
-        f1 = new JMenuItem("new");
-        f2 = new JMenuItem("open");
-        f3 = new JMenuItem("save");
-        f4 = new JMenuItem("close");
+        f1 = new JMenuItem("New                                    Ctrl + N");
+        f2 = new JMenuItem("New Window         Ctrl + Shift + N");
+        f3 = new JMenuItem("Open...                               Ctrl + O");
+        f4 = new JMenuItem("Save                                   Ctrl + S");
+        f5 = new JMenuItem("Save As                 Ctrl + Shift + S");
+        f6 = new JMenuItem("Page Setup...");
+        f7 = new JMenuItem("Print                                    Ctrl + P");
+        f8 = new JMenuItem("Exit");
         f1.addActionListener(this);
         f2.addActionListener(this);
         f3.addActionListener(this);
         f4.addActionListener(this);
+        f5.addActionListener(this);
+        f6.addActionListener(this);
+        f7.addActionListener(this);
+        f8.addActionListener(this);
         file.add(f1);
         file.add(f2);
         file.add(f3);
         file.add(f4);
+        file.add(f5);
+        file.add(f6);
+        file.add(f7);
+        file.add(f8);
         menubar.add(file);
 
         // menu2 - edit
