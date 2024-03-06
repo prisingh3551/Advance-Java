@@ -1,0 +1,69 @@
+/**
+ * interface MouseListener
+ * events - mouseEntered(), mouseClicked(), mousePressed(), mouseExited(), mouseReleased()
+ */
+
+import java.awt.Color;
+import java.awt.Container;
+import java.awt.Font;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JTextArea;
+
+class MyFrame extends JFrame implements MouseListener{
+    JTextArea ta;
+    JButton btn;
+    MyFrame(){
+        setBounds(100, 100, 600, 500);
+        setLocationRelativeTo(null);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        Container c = getContentPane();
+        c.setLayout(null);
+
+        ta = new JTextArea(10, 20);
+        ta.setBounds(10, 10, 500, 400);
+        ta.setFont(new Font("Arial", Font.ITALIC, 12));
+        ta.addMouseListener(this);
+
+        c.add(ta);
+        btn = new JButton();
+        btn.setBounds(50, 50, 300, 100);
+        btn.setFont(new Font("Arial", Font.ITALIC, 12));
+        c.add(btn);
+        btn.addMouseListener(this);
+        setVisible(true);
+    }
+    @Override
+    public void mouseClicked(MouseEvent e) {
+        ta.setText("Mouse Clicked");
+        ta.setBackground(Color.red);
+    }
+    @Override
+    public void mousePressed(MouseEvent e) {
+        ta.setText("Mouse Pressed");
+        ta.setBackground(Color.GREEN);
+    }
+    @Override
+    public void mouseReleased(MouseEvent e) {
+        ta.setText("Mouse Released");
+        ta.setBackground(Color.YELLOW);
+    }
+    @Override
+    public void mouseEntered(MouseEvent e) {
+        ta.setText("Mouse Entered");
+        ta.setBackground(Color.GRAY);
+    }
+    @Override
+    public void mouseExited(MouseEvent e) {
+        ta.setText("Mouse Exited");
+        ta.setBackground(Color.WHITE);
+    }
+}
+public class MouseEventTest {
+    public static void main(String[] args) {
+        new MyFrame();
+    }
+}
