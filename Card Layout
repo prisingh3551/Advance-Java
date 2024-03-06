@@ -1,0 +1,32 @@
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import java.awt.*;
+public class Card_Layout {
+    public static void main(String[] args) {
+        JFrame jf = new JFrame("Card Layout");
+        jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        jf.setBounds(100, 100, 800, 700);
+        jf.setLocationRelativeTo(null);
+        Container c = jf.getContentPane();  
+        CardLayout card = new CardLayout();
+        c.setLayout(card);
+        JButton b1 = new JButton("Page 1");
+        JButton b2 = new JButton("Page 2");
+        JButton b3 = new JButton("Page 3");
+        JButton b4 = new JButton("Page 4");
+        JButton b5 = new JButton("Page 5");
+        c.add(b1, "1");
+        c.add(b2, "2");
+        c.add(b3, "3");
+        c.add(b4, "4");
+        c.add(b5, "5");
+        // 1 is visible by default
+        card.next(c); // 2
+        card.previous(c); // 1
+        card.last(c); // 5
+        card.first(c); // 1
+        card.show(c, "3"); // 3 is name of the constraints
+
+        jf.setVisible(true);
+    }
+}
